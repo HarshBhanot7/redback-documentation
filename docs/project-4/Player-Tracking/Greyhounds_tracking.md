@@ -27,13 +27,14 @@ This project focuses on detecting and tracking greyhounds in races using YOLOv8 
 2. [Installation](#installation)
     - [Prerequisites](#prerequisites)
     - [Steps](#steps)
-3. [Dataset](#dataset)
-4. [Challenges and Solutions](#challenges-and-solutions)
-5. [Future Work](#future-work)
-6. [Contributing](#contributing)
-7. [Contributors](#contributors)
-8. [License](#license)
-9. [Acknowledgements](#acknowledgements)
+3. [Speed Calculation](Speed-Calculation-Method)
+4. [Dataset](#dataset)
+5. [Challenges and Solutions](#challenges-and-solutions)
+6. [Future Work](#future-work)
+7. [Contributing](#contributing)
+8. [Contributors](#contributors)
+9. [License](#license)
+10. [Acknowledgements](#acknowledgements)
 
 ## Installation
 
@@ -72,6 +73,14 @@ This project focuses on detecting and tracking greyhounds in races using YOLOv8 
 The dataset used for training the model includes a large collection of images of greyhounds, labeled and annotated using Roboflow. The dataset was created by the team, with tasks distributed among members to efficiently label each image, ensuring a high-quality dataset to improve the model's performance.
 
 - [View our Roboflow repository](https://universe.roboflow.com/greyhound-tracking-ioamr/australian-greyhound-racing)
+
+
+## Speed Calculation Method
+The speed of greyhounds is estimated using the following steps:
+1. **Detection**: YOLOv8 detects greyhounds in each video frame.
+2. **Tracking**: DeepSort tracks detected greyhounds, assigning a unique ID to each.
+3. **Position Tracking**: The center of each bounding box is recorded across frames.
+4. **Speed Estimation**: Speed is calculated by measuring the Euclidean distance between positions in consecutive frames and multiplying by the frame rate (FPS).
 
 ## Challenges and Solutions
 - **Close Proximity Detection:** Initial challenges included difficulties in detecting greyhounds when they were close together. This was mitigated by expanding the dataset and refining the model.
